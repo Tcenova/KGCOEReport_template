@@ -11,6 +11,8 @@
 \RequirePackage{multicol} %Make columns
 \RequirePackage[margin=1in]{geometry} %Change margins
 \RequirePackage[most]{tcolorbox}  % For the "RIT" box on EEEE cover
+\RequirePackage{fancyhdr} %For the footer
+\RequirePackage{lastpage} %For the page count
 
 \setlength{\parindent}{0pt} % Don't indent paragraphs
 
@@ -27,7 +29,7 @@
 	\newcommand{\KGCOEDocType}{CMPE}
 
 	\renewcommand{\maketitle}{%
-	\vspace*{2.5cm}
+		\vspace*{2.5cm}
 
 		\begin{center}
 			\large
@@ -76,6 +78,14 @@
 \DeclareOption{EEEE}{
 	\newcommand{\KGCOEDocType}{EEEE}
 
+	\pagestyle{fancy}
+	\fancyhf{}
+	\fancyhead{}
+	\lfoot{\footnotesize \classCode}
+	\rfoot{\footnotesize Page \thepage \: of \pageref{LastPage}}
+	\cfoot{\footnotesize \dateSubmitted}
+	\renewcommand{\headrulewidth}{0pt} %remove header bar
+
 	\renewcommand{\maketitle}{%
 
 		\begin{flushright}\begin{tcolorbox}[colback=black,coltext=white,halign=center,boxrule=0pt,
@@ -94,7 +104,7 @@
 		% Optional parameter of partner
 		\ifdefined\partnerName
 			\textbf{Partner:} &\partnerName\\
-			\\
+
 		\fi
 
 		\textbf{To:} &\TAs \ | Section \LabSectionNum\\
