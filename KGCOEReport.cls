@@ -13,6 +13,8 @@
 \RequirePackage[most]{tcolorbox}  % For the "RIT" box on EEEE cover
 \RequirePackage{fancyhdr} %For the footer
 \RequirePackage{lastpage} %For the page count
+\RequirePackage{graphicx} %For images on title page
+\RequirePackage{tabularx} %For title page formatting
 
 \setlength{\parindent}{0pt} % Don't indent paragraphs
 
@@ -112,6 +114,44 @@
 		\textbf{Subject:} &Lab \exerciseNumber: \exerciseDescription
 		\end{tabular}
 
+		\noindent
+		\rule{\textwidth}{.1pt}
+	}
+}
+
+%%%%%%% Write a DIGIC report
+\DeclareOption{DIGIC}{
+	\newcommand{\KGCOEDocType}{DIGIC}
+	
+	\newcommand{\setupReport}{
+		\renewcommand{\headrulewidth}{0pt}
+		\pagestyle{fancy}
+		\fancyhead{}
+		\rfoot{\footnotesize Page \thepage \: of \pageref{LastPage}}
+		\lfoot{\footnotesize \classCode \: Engineering Report}
+		\cfoot{}
+	}
+	
+	\renewcommand{\maketitle}{%
+		
+		\begin{tabularx}{\linewidth}{Xr}
+			\scriptsize \textbf{\classCode \: \className}  & \raisebox{-.5\height}{\includegraphics[width=9cm]{RIT_Report}}
+		\end{tabularx}
+	
+		\vspace{0.7cm}
+		
+		\huge
+		\textbf{Engineering Report}\\
+		\normalsize
+		
+		\noindent
+		\begin{tabular}{ll}
+			\textbf{From:} \name\\			
+			\textbf{Date:} \dateSubmitted\\
+			\textbf{Subject:} \exerciseDescription
+		\end{tabular}
+	\vspace{0.5cm}
+		
 		\noindent
 		\rule{\textwidth}{.1pt}
 	}

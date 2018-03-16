@@ -9,15 +9,29 @@ are up to specification for the KGCOE departments.
 * Helper functions for common tasks (including graphics, ect.)
 * Pandoc template for writing reports in Markdown
 
+### Installation
+Run the following to install on ubuntu with texlive
+```
+./install.sh
+```
+or
+
+Place the `KGCOEReport.cls` and `imgs/RIT_Report.png` class file in the same folder as the `.tex` document (image only needed for DIGIC)
+
+
 ### Usage
-Stick the `KGCOEReport.cls` class file in the same folder as the `.tex` document
-and use it as the document class with the department as an option:
+If not installed in the tex path, then place the `KGCOEReport.cls` class file in the same folder as the `.tex` document
+and use it as the document class with the department (or class) as an option:
 ```
 \documentclass[CMPE]{KGCOEReport}
 ```
 or
 ```
 \documentclass[EEEE]{KGCOEReport}
+```
+or
+```
+\documentclass[DIGIC]{KGCOEReport}
 ```
 
 The document must also contain proper variables containing the class
